@@ -26,5 +26,17 @@ export default class GameView{
         `;
         this.onTileClick = undefined;
         this.onRestartClick = undefined;
+
+        this.root.querySelectorAll(".board__tile").forEach(tile => {
+            tile.addEventListener("click", () =>{
+                this.onTileClick(tile.dataset.index);
+            });
+        });
+
+        this.root.querySelector(".header__restart").addEventListener("click", () =>{
+            if(this.onRestartClick){
+                this.onRestartClick();
+            }
+        })
     }
 }
